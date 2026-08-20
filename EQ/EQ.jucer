@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="eqPlg1" name="EQ" projectType="audioplug" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" companyName="AudioFlower"
+              companyWebsite="https://audioflower.art" companyEmail="luke@audioflower.art"
+              version="1.0.0" pluginManufacturerCode="Lgld" pluginCode="Peq1"
+              pluginDesc="Six-band parametric EQ with live spectrum analysis">
+  <MAINGROUP id="eqMain" name="EQ">
+    <GROUP id="{7F3A9C21-4B8E-D6A0-1F52-9E3C7A0B4D18}" name="Source">
+      <FILE id="eqPPc0" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="eqPPh0" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="eqPEc0" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="eqPEh0" name="PluginEditor.h" compile="0" resource="0"
+            file="Source/PluginEditor.h"/>
+      <FILE id="eqEBc0" name="EQBand.cpp" compile="1" resource="0"
+            file="Source/EQBand.cpp"/>
+      <FILE id="eqEBh0" name="EQBand.h" compile="0" resource="0"
+            file="Source/EQBand.h"/>
+      <FILE id="eqCDc0" name="EQCurveDisplay.cpp" compile="1" resource="0"
+            file="Source/EQCurveDisplay.cpp"/>
+      <FILE id="eqCDh0" name="EQCurveDisplay.h" compile="0" resource="0"
+            file="Source/EQCurveDisplay.h"/>
+      <FILE id="eqLFc0" name="EQLookAndFeel.cpp" compile="1" resource="0"
+            file="Source/EQLookAndFeel.cpp"/>
+      <FILE id="eqLFh0" name="EQLookAndFeel.h" compile="0" resource="0"
+            file="Source/EQLookAndFeel.h"/>
+      <FILE id="eqSAc0" name="SpectrumAnalyzer.cpp" compile="1" resource="0"
+            file="Source/SpectrumAnalyzer.cpp"/>
+      <FILE id="eqSAh0" name="SpectrumAnalyzer.h" compile="0" resource="0"
+            file="Source/SpectrumAnalyzer.h"/>
+    </GROUP>
+    <GROUP id="{9B2E7D14-3A6C-4F81-8E5D-2C1A9F60B733}" name="Resources">
+      <FILE id="eqFntI" name="IndieFlower-Regular.ttf" compile="0" resource="1"
+            file="Resources/IndieFlower-Regular.ttf"/>
+      <FILE id="eqFntPM" name="IBMPlexMono-Regular.ttf" compile="0" resource="1"
+            file="Resources/IBMPlexMono-Regular.ttf"/>
+      <FILE id="eqPre1" name="default.xml" compile="0" resource="1"
+            file="Resources/default.xml"/>
+      <FILE id="eqPre2" name="low cut.xml" compile="0" resource="1"
+            file="Resources/low cut.xml"/>
+      <FILE id="eqPre3" name="vocal presence.xml" compile="0" resource="1"
+            file="Resources/vocal presence.xml"/>
+      <FILE id="eqPre4" name="telephone.xml" compile="0" resource="1"
+            file="Resources/telephone.xml"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_processors_headless" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="0"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="EQ"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="EQ"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors_headless" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+</JUCERPROJECT>
