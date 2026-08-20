@@ -175,8 +175,8 @@ private:
     // bin averaging). History: 1/24-octave originally (1/6 even earlier,
     // which blended individual harmonics into a couple of soft bumps and lost
     // real detail) -> briefly widened to 1/12 to fix a "blocky/faceted" look,
-    // but that traded away the busy peaks-and-notches texture the user
-    // actually wants visible (a flat, over-smoothed blob is the opposite
+    // but that traded away the busy peaks-and-notches texture that makes
+    // the display informative (a flat, over-smoothed blob is the opposite
     // problem from "blocky") -> narrowed to 1/32, tighter than the original
     // 1/24, specifically to bring more individual peaks back. Applied as
     // +/- 1/64 octave around each bin.

@@ -681,7 +681,8 @@ void EQCurveDisplay::drawAxisLabel (juce::Graphics& g, const juce::String& text,
                                     juce::Rectangle<int> box, juce::Justification just) const
 {
     // No backdrop — text drawn directly over whatever's underneath
-    // (grid/curve/points), per explicit request.
+    // (grid/curve/points) -- a per-label backdrop was tried and dropped
+    // as visual clutter; see the axis-labels comment in paint().
     g.setColour (EQLookAndFeel::ink().withAlpha (0.55f));
     g.setFont (EQLookAndFeel::uiFont (10.0f));
     g.drawText (text, box, just);
@@ -872,9 +873,9 @@ void EQCurveDisplay::paint (juce::Graphics& g)
                                       bool filled, float fillAlpha, float contourAlpha, float strokeWidth)
         {
             // Tighter than the first attempt (was 4px) -- wider spacing
-            // smoothed over exactly the small peak-to-peak texture the user
-            // wants visible; still coarser than 1px so the spline sweeps
-            // through peaks rather than kinking at every pixel.
+            // smoothed away exactly the small peak-to-peak texture that
+            // makes the analyzer readable; still coarser than 1px so the
+            // spline sweeps through peaks rather than kinking at every pixel.
             constexpr float step = 1.5f;
             std::vector<juce::Point<float>> pts;
             pts.reserve ((size_t) (w / step) + 2);
@@ -1177,7 +1178,7 @@ void EQCurveDisplay::paint (juce::Graphics& g)
                 // where an HP/LP has filtered the signal to nothing, post
                 // pins to the analyzer floor (the bottom pixel row) and this
                 // stroke otherwise ran along the bottom edge as a bright
-                // flat line saying nothing but "empty" ("i dont like them").
+                // flat line saying nothing but "empty".
                 // Full strength above ~10px from the floor, gone by ~2px --
                 // the dive DOWN toward the floor stays visible (that part is
                 // informative), only the landing strip disappears.
@@ -1498,7 +1499,7 @@ void EQCurveDisplay::paint (juce::Graphics& g)
         // Drawn from the LATCHED band + smoothed alpha (see timerCallback's
         // fade block), not hoverStripBand() directly -- so everything eases
         // in on approach and eases back out at its last position after the
-        // cursor leaves, instead of popping ("it feels like a jump").
+        // cursor leaves, instead of popping in and out abruptly.
         const int sb = hoverStripShownBand;
         if (sb >= 0 && bandOn (sb) && hoverStripAlpha > 0.02f)
         {
@@ -1629,7 +1630,7 @@ void EQCurveDisplay::paint (juce::Graphics& g)
 
     // --- axis labels ------------------------------------------------------
     // Drawn LAST, on top of the grid/curve/points/analyzer (bare text, no
-    // backdrop — a backdrop was tried and removed at the user's request).
+    // backdrop — a per-label backdrop was tried and dropped as clutter).
     for (auto& mark : freqMarks)
     {
         const int labelX = juce::jlimit (0, getWidth() - 28, (int) freqToX (mark.first) - 14);
@@ -2117,8 +2118,8 @@ void EQCurveDisplay::setRangePresetIndex (int index)
     rangePresetIndex = index;
     // verticalRangeDb is NOT snapped here any more -- it GLIDES toward the
     // new preset (see tickRangeGlide), so both the auto-expand-on-drag and
-    // a manual bubble pick rescale the graph smoothly instead of in one
-    // frame ("it snaps and is not smooth").
+    // a manual bubble pick rescale the graph smoothly instead of
+    // snapping it in a single frame.
     repaint();
 }
 
@@ -2208,7 +2209,7 @@ void EQCurveDisplay::mouseDown (const juce::MouseEvent& e)
                 // Listen isn't an APVTS parameter (see EQAudioProcessor::
                 // setListenBand), and it's MOMENTARY: engaged only while
                 // the mouse button is held on this cell -- mouseUp() snaps
-                // it back off ("click and hold to use the feature").
+                // it back off: press-and-hold, not a toggle.
                 // Dragging during the hold sweeps the band's frequency
                 // (see mouseDrag/the header comment), so the freq gesture
                 // opens now and closes on release.

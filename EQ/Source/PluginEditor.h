@@ -199,9 +199,9 @@ private:
         {
             auto r = getLocalBounds().toFloat().reduced (0.5f);
 
-            // Full h/2 stadium ends, SETTLED by eye at the 48px height: a
+            // Full h/2 stadium ends, settled by eye at the 48px height: a
             // 12px cap (guide-panel family) was built and compared, and the
-            // capsule looked better -- don't re-suggest capping it.
+            // capsule looked better.
             const float radius = r.getHeight() * 0.5f;
 
             // FROSTED GLASS: what the graph is drawing underneath shows

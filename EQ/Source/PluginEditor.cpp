@@ -328,9 +328,8 @@ EQAudioProcessorEditor::EQAudioProcessorEditor (EQAudioProcessor& p)
     // every control lives on) with one transform, so the absolute-pixel
     // layout survives untouched at any size. This replaces the earlier
     // fixed setScaleFactor(1.2f) approach; the default below started as
-    // that same 20%-up look (864) and was bumped to 1.3x (936x701) at the
-    // user's request ("default to a little bigger") -- just the starting
-    // point for the corner-drag resizer either way. The chosen size is
+    // that same 20%-up look (864) and later settled at 1.3x (936x701) --
+    // just the starting point for the corner-drag resizer either way. The chosen size is
     // remembered on the PROCESSOR (survives closing/reopening the editor)
     // and rides along in the saved session state (survives project reload
     // -- see getStateInformation), though never in preset files.

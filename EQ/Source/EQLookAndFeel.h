@@ -42,9 +42,9 @@ public:
     //     ~25%, same channel ratios. NOT a neutral charcoal (deliberate
     //     distance from Pro-Q's grey) and NOT pure black (thin light strokes
     //     halate on #000). Depth was tuned by eye across three trials: the
-    //     raw site value read slightly too dark, a ~50% lift (#27211B) was
-    //     firmly rejected ("way better before"), this midpoint is the
-    //     "something more subtle" landing spot.
+    //     raw site value read slightly too dark, a ~50% lift (#27211B)
+    //     overshot and washed the mood out, and this midpoint is the
+    //     landing spot.
     // dimmedBackground(): what background() blends TOWARD while bypassed
     //     (see PluginEditor's bypassDim / EQCurveDisplay::setBackgroundDim);
     //     also folded into the ComboBox fill via setDimAmount() below. On
