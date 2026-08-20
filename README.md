@@ -72,6 +72,12 @@ Requires [JUCE 8](https://juce.com/get-juce/) and Xcode. Open `EQ/EQ.jucer` in
 Projucer, then build the `EQ - All` target from
 `EQ/Builds/MacOSX/EQ.xcodeproj`.
 
+## Fonts
+
+The interface uses IBM Plex Mono (numerics and labels) and Indie Flower (the
+wordmark), both under the SIL Open Font License. License texts are included
+alongside the fonts in `EQ/Resources/`.
+
 ## Status
 
 Feature-complete and stable. Part of a small suite of audio plugins built under
