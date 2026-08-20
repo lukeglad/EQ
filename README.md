@@ -4,7 +4,7 @@ An AU/VST3 audio plugin built for real mixing work, not as a demo. Six bands,
 per-band dynamic EQ, live spectrum analysis, and an interface designed around
 how you actually reach for an EQ mid-session.
 
-![EQ — six bands shaping a live signal, with per-band dynamics engaged](EQ/Screenshots/eq-main.png)
+https://github.com/user-attachments/assets/a3f4d9ef-b67a-4938-9f36-5335dceb4ec8
 
 ## How this was built
 
