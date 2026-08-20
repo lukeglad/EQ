@@ -289,6 +289,13 @@ EQAudioProcessorEditor::EQAudioProcessorEditor (EQAudioProcessor& p)
     content.addAndMakeVisible (bypassButton);
     bypassAtt = std::make_unique<APVTS::ButtonAttachment> (processorRef.apvts, "bypass", bypassButton);
 
+   #if JUCE_DEBUG
+    // So the debug-only hi-res capture shortcut can receive key events at
+    // all (see keyPressed). Release builds don't take focus, exactly as
+    // before.
+    setWantsKeyboardFocus (true);
+   #endif
+
     // Hints shown in the readout pill while these are hovered. All lower
     // case, matching the top bar's own "presets" label.
     //
@@ -445,6 +452,43 @@ void EQAudioProcessorEditor::mouseExit (const juce::MouseEvent&)
 {
     readoutPill.setHint ({});
 }
+
+#if JUCE_DEBUG
+bool EQAudioProcessorEditor::keyPressed (const juce::KeyPress& key)
+{
+    if (key == juce::KeyPress ('s', juce::ModifierKeys::ctrlModifier
+                                  | juce::ModifierKeys::shiftModifier, 0))
+    {
+        saveHiResSnapshot (3);
+        return true;
+    }
+
+    return false; // everything else falls through to the host as usual
+}
+
+void EQAudioProcessorEditor::saveHiResSnapshot (int scale)
+{
+    // Renders the editor and every child offscreen at `scale`, including the
+    // content canvas's own transform -- so the result is the exact layout on
+    // screen, just rasterised bigger.
+    const auto image = createComponentSnapshot (getLocalBounds(), false, (float) scale);
+
+    if (! image.isValid())
+        return;
+
+    // getNonexistentSibling() means repeated captures never overwrite each
+    // other: EQ-hires.png, EQ-hires (2).png, and so on.
+    const auto file = juce::File::getSpecialLocation (juce::File::userDesktopDirectory)
+                          .getChildFile ("EQ-hires.png")
+                          .getNonexistentSibling();
+
+    if (auto stream = file.createOutputStream())
+    {
+        juce::PNGImageFormat png;
+        png.writeImageToStream (image, *stream);
+    }
+}
+#endif
 
 void EQAudioProcessorEditor::setBandParamFromEditor (juce::StringRef name, float value)
 {

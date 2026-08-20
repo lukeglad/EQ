@@ -39,6 +39,24 @@ private:
     // eventComponent simply isn't in the map, so nothing is shown.
     void mouseEnter (const juce::MouseEvent&) override;
     void mouseExit  (const juce::MouseEvent&) override;
+
+   #if JUCE_DEBUG
+    // DEBUG BUILDS ONLY -- never compiled into a release, so it can't reach
+    // a user. Ctrl+Shift+S writes a high-resolution PNG of the whole editor
+    // to the Desktop.
+    //
+    // Worth it because this entire UI is VECTOR: paths, gradients, and text
+    // drawn live, with no bitmaps anywhere. Rendering it at 3x therefore
+    // produces genuinely sharp detail rather than an upscale -- and it's
+    // independent of the display, so a 1080p monitor can still produce
+    // ~3700px assets for the website. A screen capture is capped at
+    // whatever the screen physically shows.
+    //
+    // Ctrl (not Cmd) because DAWs claim most Cmd combinations for
+    // themselves -- Cmd+S / Cmd+Shift+S are Save / Save As in every host.
+    bool keyPressed (const juce::KeyPress&) override;
+    void saveHiResSnapshot (int scale);
+   #endif
     void registerHint (juce::Component& c, juce::String text);
     std::map<juce::Component*, juce::String> hints;
 
