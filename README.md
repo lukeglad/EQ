@@ -78,6 +78,12 @@ The interface uses IBM Plex Mono (numerics and labels) and Indie Flower (the
 wordmark), both under the SIL Open Font License. License texts are included
 alongside the fonts in `EQ/Resources/`.
 
+## License
+
+AGPLv3 — see [LICENSE](LICENSE). This is JUCE's open-source option, and it's
+copyleft: anyone who builds on this and ships it has to publish their source
+too. Copyright remains mine.
+
 ## Status
 
 Feature-complete and stable. Part of a small suite of audio plugins built under
